@@ -31,21 +31,25 @@
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden; /* KUNCI UTAMA: Mencegah scroll ke samping */
         }
 
         body {
             background-color: var(--white);
             color: var(--text-dark);
-            overflow-x: hidden; /* Mencegah scroll horizontal */
+            overflow-x: hidden;
             line-height: 1.6;
+            width: 100%;
         }
 
         /* --- UTILITIES --- */
+        /* Perbaikan Container: Pastikan margin auto benar-benar bekerja */
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 0 auto; 
             padding: 0 20px;
             width: 100%;
+            position: relative; /* Menjaga konteks stacking */
         }
 
         .btn {
@@ -87,12 +91,24 @@
             color: var(--primary-blue);
         }
 
+        /* Perbaikan Section Title: Memastikan benar-benar di tengah */
         .section-title {
             text-align: center;
             font-size: 2.5rem;
             color: var(--primary-blue);
             margin-bottom: 3rem;
             font-weight: 700;
+            width: 100%; /* Memaksa lebar penuh */
+            position: static; /* Reset posisi */
+            transform: none; /* Reset transformasi */
+            display: block;
+        }
+
+        /* Wrapper untuk section agar tidak overflow */
+        section {
+            width: 100%;
+            overflow: hidden; /* Memotong elemen dekorasi yang keluar jalur */
+            position: relative;
         }
 
         /* --- ANIMATIONS --- */
@@ -168,13 +184,13 @@
         /* --- HERO SECTION --- */
         .hero {
             position: relative;
-            min-height: 100vh; /* Menggunakan min-height agar fleksibel */
+            min-height: 100vh;
             background: var(--primary-blue);
             display: flex;
             align-items: center;
-            padding-top: 100px; /* Offset header */
-            padding-bottom: 100px; /* Ruang untuk wave */
-            overflow: hidden;
+            padding-top: 100px;
+            padding-bottom: 100px;
+            overflow: hidden; /* Penting! */
         }
 
         .hero-content {
@@ -218,7 +234,7 @@
 
         .hero-image img {
             width: 100%;
-            max-width: 450px; /* Membatasi ukuran gambar agar tidak terlalu besar */
+            max-width: 450px;
             height: auto;
             animation: float 4s ease-in-out infinite;
             filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
@@ -260,9 +276,9 @@
 
         .features-grid {
             display: grid;
-            /* Grid yang lebih pintar untuk responsivitas */
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
             gap: 30px;
+            justify-content: center; /* Memastikan grid center */
         }
 
         .feature-card {
@@ -272,6 +288,8 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             transition: 0.3s;
             border: 1px solid #eee;
+            /* Pastikan card tidak keluar dari container */
+            max-width: 100%; 
         }
 
         .feature-card:hover {
@@ -313,6 +331,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 40px;
+            justify-content: center; /* Memastikan grid center */
         }
 
         .product-card {
@@ -360,7 +379,7 @@
         }
 
         .product-img-box img {
-            height: 70%; /* Mencegah gambar terlalu penuh */
+            height: 70%;
             z-index: 2;
             object-fit: contain;
             transition: transform 0.3s;
@@ -373,7 +392,7 @@
         .product-details {
             padding: 25px;
             text-align: center;
-            flex-grow: 1; /* Agar tombol sejajar di bawah */
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
@@ -421,11 +440,12 @@
             color: var(--white);
             position: relative;
             margin-top: 50px;
+            overflow: hidden; /* Mencegah Wave melebar */
         }
         
         .cta-curve-top {
             position: absolute;
-            top: -1px; /* Fix gap line */
+            top: -1px;
             left: 0;
             width: 100%;
             line-height: 0;
@@ -508,7 +528,7 @@
             opacity: 0.7;
         }
 
-        /* --- RESPONSIVE CSS (FIXED) --- */
+        /* --- RESPONSIVE CSS --- */
         @media (max-width: 1024px) {
             .hero-text h1 {
                 font-size: 3rem;
@@ -529,10 +549,10 @@
             .nav-links {
                 position: fixed;
                 top: 0;
-                right: -100%; /* Sembunyikan di kanan */
-                width: 75%; /* Jangan full width agar user bisa klik luar */
+                right: -100%;
+                width: 75%;
                 height: 100vh;
-                background-color: var(--white); /* Background putih agar bersih */
+                background-color: var(--white);
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
@@ -565,7 +585,7 @@
             }
 
             .hero-content {
-                flex-direction: column-reverse; /* Gambar di atas teks (tapi karena HTML structure, kita mainkan urutan) */
+                flex-direction: column-reverse;
                 gap: 40px;
             }
 
