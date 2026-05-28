@@ -119,10 +119,13 @@
 </head>
 <body class="font-sans text-gray-800 bg-gray-50 antialiased overflow-x-hidden selection:bg-ylosPink selection:text-white">
 
-    <!-- PENGUMUMAN DISCONTINUE (TIDAK BISA DI-CLOSE) -->
-    <div id="discontinue-overlay" class="fixed inset-0 z-[99999] flex items-center justify-center bg-gray-900/80 backdrop-blur-md px-4 pointer-events-auto">
+    <div id="discontinue-overlay" class="fixed inset-0 z-[99999] flex items-center justify-center bg-gray-900/80 backdrop-blur-md px-4 pointer-events-auto transition-opacity duration-300">
         <div class="bg-white rounded-[2rem] shadow-2xl max-w-2xl w-full p-8 md:p-12 text-center relative overflow-hidden border border-gray-100 animate-fade-in-up">
-            <!-- Dekorasi Background -->
+            
+            <button onclick="document.getElementById('discontinue-overlay').classList.add('hidden')" class="absolute top-5 right-5 z-50 w-10 h-10 bg-gray-100 hover:bg-red-100 hover:text-red-500 text-gray-500 rounded-full flex items-center justify-center transition-all duration-300">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
             <div class="absolute -top-10 -left-10 w-40 h-40 bg-ylosPink/20 rounded-full blur-2xl pointer-events-none"></div>
             <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-ylosYellow/20 rounded-full blur-2xl pointer-events-none"></div>
 
@@ -157,12 +160,10 @@
                     </div>
                 </div>
                 
-                <p class="text-xs text-gray-400 italic">Harap maklum, fitur halaman website saat ini ditutup hingga pemberitahuan selanjutnya.</p>
+                <p class="text-xs text-gray-400 italic">Harap maklum, beberapa fitur pendaftaran mungkin ditutup sementara hingga pemberitahuan selanjutnya.</p>
             </div>
         </div>
     </div>
-    <!-- END PENGUMUMAN DISCONTINUE -->
-
     <div id="welcome-overlay" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white/70 backdrop-blur-2xl transition-all duration-1000 ease-in-out">
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
             <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-ylosPink/40 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
